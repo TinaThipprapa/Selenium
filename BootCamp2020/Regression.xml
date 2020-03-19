@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name= "Adhocofupdated">
+
+  
+	<test name="Reg">
+	<parameter name="url" value ="https://www.homedepot.com"></parameter>
+	<parameter name="browser" value="Chrome"></parameter>
+	
+		<classes>
+			<class name="Com.Homedepot.BootCamp2020.TestScript"></class>
+		</classes>
+	</test>
+	<test name="Regession">
+	<parameter name="url" value ="https://www.homedepot.com"></parameter>
+	<parameter name="browser" value="firefox"></parameter>
+	
+		<classes>
+			<class name="Com.Homedepot.BootCamp2020.TestScript"></class>
+		</classes>
+	</test>
+	
+	 
+</suite>

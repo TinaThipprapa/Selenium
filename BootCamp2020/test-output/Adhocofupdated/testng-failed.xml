@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Adhocofupdated]">
+  <test thread-count="5" name="Regession(failed)">
+    <parameter name="browser" value="firefox"/>
+    <parameter name="url" value="https://www.homedepot.com"/>
+    <classes>
+      <class name="Com.Homedepot.BootCamp2020.TestScript">
+        <methods>
+          <include name="f"/>
+          <include name="afterClass"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- Com.Homedepot.BootCamp2020.TestScript -->
+    </classes>
+  </test> <!-- Regession(failed) -->
+</suite> <!-- Failed suite [Adhocofupdated] -->
