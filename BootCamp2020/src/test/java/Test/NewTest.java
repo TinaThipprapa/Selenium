@@ -3,12 +3,15 @@ package Test;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 
 public class NewTest {
@@ -29,11 +32,30 @@ public class NewTest {
 	  driver.findElement(By.xpath("//*[@id=\"gcw-flights-form-hp-flight\"]/div[7]/label/button")).click();
 	  //driver.findElement(By.xpath("//*[text()='Search']")).click();
 	  driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS );
-	  driver.findElement(By.xpath("//*[@id=\"flight-module-2020-03-27t10:55:00+07:00-coach-bkk-tpe-ci-834-coach-tpe-ngo-ci-150_2020-04-12t12:15:00+09:00-coach-ngo-tpe-ci-155-coach-tpe-bkk-ci-833_\"]/div[1]/div[1]/div[2]/div/div[2]/button")).click();
-	  driver.findElement(By.xpath("//*[@id=\"flight-module-2020-03-27t10:55:00+07:00-coach-bkk-tpe-ci-834-coach-tpe-ngo-ci-150_2020-04-12t09:55:00+09:00-coach-ngo-tpe-ci-151-coach-tpe-bkk-ci-835_\"]/div[1]/div[1]/div[2]/div/div[2]/button")).click();
+	  driver.findElement(By.xpath("//*[@id=\"flight-module-2020-03-27t08:15:00+07:00-coach-bkk-nrt-jl-708-coach-nrt-ngo-jl-3087_2020-04-12t14:45:00+09:00-coach-ngo-nrt-jl-3084-coach-nrt-bkk-jl-707_\"]/div[1]/div[1]/div[2]/div/div[2]/button")).click();
+	  driver.findElement(By.xpath("//*[@id=\"flight-module-2020-03-27t08:15:00+07:00-coach-bkk-nrt-jl-708-coach-nrt-ngo-jl-3087_2020-04-12t14:45:00+09:00-coach-ngo-nrt-jl-3084-coach-nrt-bkk-jl-707_\"]/div[1]/div[1]/div[2]/div/div[2]/button")).click();
 	  Thread.sleep(10000);
+	  ArrayList<String> tab2 = new ArrayList<String>(driver.getWindowHandles());
+	  driver.switchTo().window(tab2.get(1));
+	  
 	  WebElement click =driver.findElement(By.xpath("//*[contains(text(),'Continue Booking')]"));
-	  click.click();
+	  Actions action= new Actions(driver);
+	  action.moveToElement(click).click().build().perform();
+	  
+	  driver.findElement(By.id("firstname[0]")).sendKeys("Tina");
+	  driver.findElement(By.id("lastname[0]")).sendKeys("Popiyar");
+	  
+	  WebElement Country = driver.findElement(By.xpath("//*[@id=\"country_code[0]\"]"));
+	  Select con = new Select(Country);
+	  con.selectByVisibleText("Thailand +66");
+	  driver.findElement(By.id("phone-number[0]")).sendKeys("0818770587");
+	 
+	  WebElement passport = driver.findElement(By.id("passport[0]"));
+	  Select pass = new Select(passport);
+	  pass.selectByVisibleText("Thailand");
+	  
+	  driver.findElement(By.xpath("//*[@id=\"email\"]/div[1]/fieldset/label/input")).sendKeys("tina@gmail.com");
+	  driver.switchTo().window(tab2.get(0));
   }
   @BeforeClass
   public void beforeClass() {
